@@ -8,8 +8,53 @@
     <title>文档</title>
 </head>
 
-<body>
+<input type="button" title="111" id="op" value="点击">
+
 
 </body>
+<script>
+    // function f1() {
+    //     console.log(this)
+    // }
+    // let btn = document.getElementById("op")
+    // btn.addEventListener('click', function () {
+    //     console.log(this)
+    //     f1()
+    // })
+    // btn.onclick = f1
+    // let obj1 = {}
+    // let obj = {
+    //     nm: 1,
+    //     fn: function () {
+    //         return this
+    //     },
+    //     f1: () => {
+    //         return this
+    //     }
+    // }
+    // console.log(obj.fn())
+    // console.log(obj.f1())
+
+    var title = '9090'
+    let group = {
+        title: "Our Group",
+        students: ["John", "Pete", "Alice"],
+        io: {
+            title: "Our Group1",
+            students: ["John1", "Pete1", "Alice1"],
+            showList: function () {
+                console.log(this)
+            }
+        },
+        showList() {
+            console.log(this)
+            this.students.forEach(function (student) {
+                console.log(this.title + ': ' + student);
+            }, group);
+        }
+    };
+    group.io.showList.call(group)
+    group.showList.call(group.io)
+</script>
 
 </html>
